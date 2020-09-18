@@ -12,6 +12,16 @@
     <artifactId>cjcrowdfunding03-admin-component</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency> <!--AOP 所需依赖 -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.cjc.funding</groupId>
             <artifactId>cjcrowdfunding04-admin-entity</artifactId>
