@@ -4,7 +4,6 @@ import com.cjc.funding.entity.Admin;
 import com.cjc.funding.entity.AdminExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.mybatis.spring.annotation.MapperScan;
 
 
 public interface AdminMapper {
@@ -29,4 +28,19 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
+
+    List<Admin> selectAdminByKeyWord(String keyword);
+
+    /**
+     * 删除旧的角色关联
+     * @param adminId
+     */
+    void deleteOldRelationship(Integer adminId);
+
+    /**
+     * 插入新的角色关联
+     * @param adminId
+     * @param roleIdList
+     */
+    void insertNewRoleRelationship(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
 }

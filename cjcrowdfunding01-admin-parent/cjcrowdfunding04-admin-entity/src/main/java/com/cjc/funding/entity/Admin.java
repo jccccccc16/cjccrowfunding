@@ -1,5 +1,6 @@
 package com.cjc.funding.entity;
 
+
 public class Admin {
     private Integer id;
 
@@ -72,6 +73,7 @@ public class Admin {
     public void setCreateTime(String createTime) {
         this.createTime = createTime == null ? null : createTime.trim();
     }
+
 
     @Override
     public String toString() {

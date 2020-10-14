@@ -21,6 +21,23 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+
+
+        <!--        配置pageHelper-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <props>
+                            <!--告诉pageHelper当前使用的数据库，生成相应的数据库语言-->
+                            <prop key="dialect">mysql</prop>
+                            <!--配置页码的合理化修正，超过最多的页码，返回最后一页-->
+                            <prop key="reasonable">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.cjc.funding.mapper"/>
