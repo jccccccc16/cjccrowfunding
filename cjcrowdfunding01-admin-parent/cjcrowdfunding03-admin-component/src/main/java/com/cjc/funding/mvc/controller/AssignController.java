@@ -2,6 +2,7 @@ package com.cjc.funding.mvc.controller;
 
 import com.cjc.funding.entity.Role;
 import com.cjc.funding.service.api.AdminService;
+import com.cjc.funding.service.api.AuthService;
 import com.cjc.funding.service.api.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ import java.util.List;
 
 @Controller
 public class AssignController {
+
+    @Autowired
+    private AuthService authService;
 
     @Autowired
     private AdminService adminService;

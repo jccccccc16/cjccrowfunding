@@ -31,6 +31,7 @@ public class RoleController {
     private RoleService roleService;
 
 
+
     @RequestMapping("/role/get/page/info.json")
     public @ResponseBody
     ResultEntity<PageInfo<Role>> getPageInfo(

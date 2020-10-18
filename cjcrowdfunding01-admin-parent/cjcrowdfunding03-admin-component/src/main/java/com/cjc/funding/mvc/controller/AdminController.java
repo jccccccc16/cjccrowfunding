@@ -7,6 +7,7 @@ import com.cjc.funding.util.constant.CrowConstant;
 import com.cjc.funding.util.utils.ResultEntity;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -27,21 +28,22 @@ public class AdminController {
      * 登录操作
      * @return
      */
-    @RequestMapping("/admin/do/doLogin.html")
-    public String doLogin(
-            @RequestParam("loginAcct") String loginAcct,
-            @RequestParam("userPswd") String userPswd,
-            HttpSession session){
-        Admin adminByAccount = adminService.getAdminByAccount(loginAcct, userPswd);
-        session.setAttribute(CrowConstant.ATTR_NAME_LOGIN_ADMIN,adminByAccount);
-        return "redirect:/admin/to/main/page.html";
-    }
-
-    @RequestMapping(value = "/admin/do/doLogout.html",method = RequestMethod.GET)
-    public String logout(HttpSession session){
-        session.invalidate();
-        return "redirect:/admin/to/login/page.html";
-    }
+//
+//    @RequestMapping("/admin/do/doLogin.html")
+//    public String doLogin(
+//            @RequestParam("loginAcct") String loginAcct,
+//            @RequestParam("userPswd") String userPswd,
+//            HttpSession session){
+//        Admin adminByAccount = adminService.getAdminByAccount(loginAcct, userPswd);
+//        session.setAttribute(CrowConstant.ATTR_NAME_LOGIN_ADMIN,adminByAccount);
+//        return "redirect:/admin/to/main/page.html";
+//    }
+//
+//    @RequestMapping(value = "/admin/do/doLogout.html",method = RequestMethod.GET)
+//    public String logout(HttpSession session){
+//        session.invalidate();
+//        return "redirect:/admin/to/login/page.html";
+//    }
 
     @RequestMapping("/admin/get/page.html")
     public String getPageInfo(
@@ -68,6 +70,7 @@ public class AdminController {
 
     }
 
+    @PreAuthorize(value = "hasRole('PROADMIN')")
     @RequestMapping("/admin/delect/{id}/{pageNum}/{keyword}.html")
     public String deleteAdmin(
            @PathVariable("id") Integer id,
@@ -80,6 +83,7 @@ public class AdminController {
     }
 
 
+    @PreAuthorize(value = "hasRole('PROADMIN')")
     @RequestMapping("/admin/do/save.html")
     public String saveAdmin(Admin admin){
         adminService.save(admin);

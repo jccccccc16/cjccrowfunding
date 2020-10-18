@@ -5,7 +5,7 @@
         <commentGenerator> <!-- 是否去除自动生成的注释 true:是;false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator> <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://192.168.52.129:3306/cjcfunding?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://192.168.52.130:3306/cjcfunding?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
                         userId="root"
                         password="cjcisgood">
 
@@ -35,6 +35,6 @@
         </javaClientGenerator>
         <!-- 数据库表名字和我们的 com.cjc.funding.entity 类对应的映射指定 -->
 <!--        <table tableName="t_admin" domainObjectName="Admin"/>-->
-        <table tableName="t_role" domainObjectName="Role" />
+        <table tableName="t_auth" domainObjectName="Auth" />
     </context>
 </generatorConfiguration>
